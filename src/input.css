@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-cream font-sans text-plum antialiased; }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; }
+  ::selection { @apply bg-blush-300 text-plum; }
+  img { @apply select-none; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-blush-500; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.22em] text-blush-600;
+  }
+  .eyebrow::before { content: ''; @apply h-px w-8 bg-blush-500; }
+
+  .section-title { @apply text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl; }
+
+  /* ---------- Buttons: fill-sweep hover ---------- */
+  .btn {
+    @apply relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 active:scale-95;
+  }
+  .btn::before {
+    content: '';
+    @apply absolute inset-0 -z-10 -translate-x-full rounded-full transition-transform duration-500 ease-out;
+  }
+  .btn:hover::before { @apply translate-x-0; }
+  .btn svg { @apply transition-transform duration-300; }
+  .btn:hover svg.arrow { @apply translate-x-1; }
+
+  .btn-primary { @apply bg-blush-500 text-white shadow-lg shadow-blush-500/30 hover:-translate-y-0.5 hover:shadow-lift; }
+  .btn-primary::before { @apply bg-plum; }
+
+  .btn-dark { @apply bg-plum text-white hover:-translate-y-0.5 hover:shadow-soft; }
+  .btn-dark::before { @apply bg-blush-500; }
+
+  .btn-outline { @apply border-2 border-plum text-plum hover:text-white; }
+  .btn-outline::before { @apply bg-plum; }
+
+  .btn-wa { @apply bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:-translate-y-0.5 hover:shadow-soft; }
+  .btn-wa::before { @apply bg-[#128C7E]; }
+
+  .btn-light { @apply bg-white text-plum hover:-translate-y-0.5 hover:text-white hover:shadow-soft; }
+  .btn-light::before { @apply bg-blush-500; }
+
+  .icon-btn {
+    @apply relative inline-flex h-11 w-11 items-center justify-center rounded-full text-plum transition-all duration-300 hover:bg-blush-100 hover:text-blush-600 hover:scale-110;
+  }
+
+  /* ---------- Cards ---------- */
+  .card {
+    @apply rounded-3xl bg-white shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-lift;
+  }
+
+  .chip {
+    @apply inline-flex cursor-pointer items-center rounded-full border border-plum/15 bg-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-blush-500 hover:text-blush-600;
+  }
+  .chip.active, .chip[aria-pressed='true'] { @apply border-blush-500 bg-blush-500 text-white shadow-lg shadow-blush-500/30 hover:text-white; }
+
+  .field {
+    @apply w-full rounded-2xl border border-plum/15 bg-white px-4 py-3 text-sm outline-none transition-all duration-300 placeholder:text-plum/40 focus:border-blush-500 focus:shadow-glow;
+  }
+
+  /* underline-grow link */
+  .link-u { @apply relative; }
+  .link-u::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-0.5 w-0 bg-blush-500 transition-all duration-300;
+  }
+  .link-u:hover::after, .link-u.active::after { @apply w-full; }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .noscroll-x { scrollbar-width: none; }
+  .noscroll-x::-webkit-scrollbar { display: none; }
+
+  /* range slider */
+  input[type='range'].range { @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-blush-200; }
+  input[type='range'].range::-webkit-slider-thumb {
+    @apply h-5 w-5 appearance-none rounded-full border-4 border-white bg-blush-500 shadow-lg transition-transform hover:scale-125;
+  }
+  input[type='range'].range::-moz-range-thumb { @apply h-5 w-5 rounded-full border-4 border-white bg-blush-500 shadow-lg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}

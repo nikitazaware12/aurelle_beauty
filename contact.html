@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Aurelle Beauty</title>
+  <meta name="description" content="Get in touch with the Aurelle team. Send us a WhatsApp message or visit our studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="min-h-[96px]"></header>
+
+  <main>
+    <!-- everything fits in one screen on desktop -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-blush-100 via-cream to-sand">
+      <div class="absolute -right-10 -top-16 h-44 w-44 animate-blob bg-blush-200/60"></div>
+      <div class="container-x relative py-4 sm:py-5">
+        <div class="mb-3 flex flex-wrap items-end justify-between gap-2">
+          <div>
+            <nav class="text-[11px] uppercase tracking-widest text-plum/60"><a href="index.html" class="hover:text-blush-600">Home</a> / <span class="text-plum">Contact</span></nav>
+            <h1 class="mt-1 text-2xl font-semibold sm:text-3xl">Let’s <em class="text-blush-500">talk</em> beauty</h1>
+          </div>
+          <p class="hidden text-sm text-plum/65 md:block">Your message goes straight to our WhatsApp.</p>
+        </div>
+
+        <div class="grid gap-4 lg:grid-cols-[1fr_1.3fr] lg:items-stretch">
+          <!-- LEFT: compact info + map -->
+          <div class="flex flex-col gap-3">
+            <div class="grid grid-cols-2 gap-2" id="info"></div>
+            <div class="relative min-h-[220px] flex-1 overflow-hidden rounded-2xl bg-sand shadow-soft">
+              <iframe id="map" title="Aurelle studio location map" class="absolute inset-0 h-full w-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+              <a id="map-link" target="_blank" rel="noopener" class="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-[11px] font-semibold shadow-soft transition-all hover:-translate-y-0.5 hover:bg-blush-500 hover:text-white">Open in Google Maps →</a>
+            </div>
+          </div>
+
+          <!-- RIGHT: form -->
+          <form id="contact-form" class="rounded-2xl bg-white p-4 shadow-soft sm:p-5" novalidate>
+            <div class="mb-3 flex items-center justify-between gap-3">
+              <h2 class="text-xl font-semibold">Send us a message</h2>
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-[#25D366]/15 px-2.5 py-1 text-[11px] font-semibold text-[#128C7E]" id="wa-pill"></span>
+            </div>
+
+            <div class="grid gap-2.5 sm:grid-cols-2">
+              <label class="block text-xs font-semibold">Your name *<input name="name" required class="field mt-1 !rounded-xl !py-2" placeholder="Jane Doe" autocomplete="name"></label>
+              <label class="block text-xs font-semibold">Phone<input name="phone" inputmode="tel" class="field mt-1 !rounded-xl !py-2" placeholder="+91 98765 43210" autocomplete="tel"></label>
+              <label class="block text-xs font-semibold sm:col-span-2">Topic
+                <select name="topic" class="field mt-1 !rounded-xl !py-2"><option>Order & delivery</option><option>Product advice</option><option>Returns & refunds</option><option>Book a consultation</option><option>Wholesale / partnerships</option><option>Something else</option></select>
+              </label>
+              <label class="block text-xs font-semibold">Preferred date
+                <input type="date" name="date" id="date" class="field mt-1 !rounded-xl !py-2">
+              </label>
+              <label class="block text-xs font-semibold">Preferred time
+                <select name="time" class="field mt-1 !rounded-xl !py-2"><option value="">Any time</option><option>10:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>4:00 PM</option><option>5:30 PM</option><option>7:00 PM</option></select>
+              </label>
+              <label class="block text-xs font-semibold sm:col-span-2">Message *<textarea name="msg" required rows="3" class="field mt-1 resize-none !rounded-xl !py-2" placeholder="How can we help?"></textarea></label>
+            </div>
+
+            <button class="btn btn-wa mt-3 w-full !py-3" id="send"></button>
+            <p class="mt-1.5 text-center text-[11px] text-plum/50">Opens WhatsApp with your message ready to send.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-white py-10 sm:py-12">
+      <div class="container-x max-w-3xl">
+        <div class="mb-5 text-center" data-reveal><span class="eyebrow">Good to know</span><h2 class="section-title mt-2">Frequently asked questions</h2></div>
+        <div id="faq-list" class="space-y-2.5"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      const { $, $$, icon, waIcon, toast, observeReveal } = window.Aurelle;
+      const WA = window.AURELLE_WA;
+
+      /* compact info tiles */
+      const tiles = [
+        ['pin', 'Studio', 'Bandra West, Mumbai', 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(window.AURELLE_MAP), 'bg-blush-100 text-blush-600 group-hover:bg-blush-500 group-hover:text-white', 'text-blush-600'],
+        ['phone', 'Call', '+91 98765 43210', 'tel:+919876543210', 'bg-blush-100 text-blush-600 group-hover:bg-blush-500 group-hover:text-white', 'text-blush-600'],
+        ['mail', 'Email', 'hello@aurelle.com', 'mailto:hello@aurelle.com', 'bg-blush-100 text-blush-600 group-hover:bg-blush-500 group-hover:text-white', 'text-blush-600'],
+        ['wa', 'WhatsApp', 'Chat instantly', 'https://wa.me/' + WA, 'bg-[#25D366]/15 text-[#128C7E] group-hover:bg-[#25D366] group-hover:text-white', 'text-[#128C7E]'],
+      ];
+      $('#info').innerHTML = tiles.map(([i, t, d, href, ic, tc]) => `
+        <a href="${href}" ${href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} class="group flex items-center gap-2.5 rounded-2xl bg-white p-2.5 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110 ${ic}">${i === 'wa' ? waIcon('h-5 w-5') : icon(i, 'h-4 w-4')}</span>
+          <span class="min-w-0 leading-tight"><span class="block text-[10px] font-bold uppercase tracking-widest ${tc}">${t}</span><span class="block truncate text-[13px] font-medium">${d}</span></span>
+        </a>`).join('');
+
+      /* map */
+      const q = encodeURIComponent(window.AURELLE_MAP);
+      $('#map').src = `https://maps.google.com/maps?q=${q}&z=14&output=embed`;
+      $('#map-link').href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+
+      $('#wa-pill').innerHTML = waIcon('h-3.5 w-3.5') + ' Replies on WhatsApp';
+      $('#send').innerHTML = waIcon('h-5 w-5') + ' Send on WhatsApp';
+
+      /* date: today or later */
+      const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+      $('#date').min = d.toISOString().slice(0, 10);
+
+      /* send to WhatsApp */
+      const form = $('#contact-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let ok = true;
+        $$('[required]', form).forEach((f) => { const bad = !f.value.trim(); f.classList.toggle('!border-blush-600', bad); ok = ok && !bad; });
+        if (!ok) { toast('Please fill your name and message', 'info'); return; }
+        const f = form.elements;
+        const date = f.date.value ? new Date(f.date.value + 'T00:00:00').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) : '';
+        const lines = [
+          'Hello Aurelle! 👋', '',
+          `*Name:* ${f.name.value.trim()}`,
+          f.phone.value.trim() ? `*Phone:* ${f.phone.value.trim()}` : null,
+          `*Topic:* ${f.topic.value}`,
+          date ? `*Preferred date:* ${date}` : null,
+          f.time.value ? `*Preferred time:* ${f.time.value}` : null,
+          '', `*Message:* ${f.msg.value.trim()}`,
+        ].filter((l) => l !== null);
+        window.open(`https://wa.me/${WA}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+        toast('Opening WhatsApp…');
+      });
+      form.addEventListener('input', (e) => e.target.classList.remove('!border-blush-600'));
+
+      /* FAQ */
+      const faqs = [
+        ['How long does delivery take?', 'Orders ship within 24 hours and usually arrive in 2–5 business days. Orders above ₹999 ship free.'],
+        ['What is your return policy?', 'Unopened items can be returned within 15 days for a full refund. Damaged items are replaced right away.'],
+        ['Are your products cruelty-free?', 'Yes. Every Aurelle formula is cruelty-free and dermatologist tested. Most of our range is also vegan.'],
+        ['Is Cash on Delivery available?', 'Yes — COD is available on most pin codes with a small ₹40 handling fee.'],
+      ];
+      $('#faq-list').innerHTML = faqs.map(([qq, a]) => `
+        <details class="group rounded-2xl border border-plum/10 bg-cream px-4 py-3 transition-all duration-300 hover:border-blush-300 open:border-blush-300 open:bg-blush-50" data-reveal>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base font-semibold [&::-webkit-details-marker]:hidden">${qq}
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-blush-600 transition-all duration-300 group-open:rotate-45 group-open:bg-blush-500 group-open:text-white">${icon('plus', 'h-3.5 w-3.5')}</span></summary>
+          <p class="mt-2 pr-8 text-sm leading-relaxed text-plum/70">${a}</p>
+        </details>`).join('');
+      observeReveal();
+    })();
+  </script>
+</body>
+</html>
