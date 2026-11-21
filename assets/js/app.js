@@ -486,7 +486,7 @@
     </footer>
     <button id="to-top" class="fixed bottom-5 left-4 z-40 flex h-10 w-10 translate-y-20 items-center justify-center rounded-full bg-plum text-white opacity-0 shadow-soft transition-all duration-300 hover:bg-blush-500 sm:left-6" aria-label="Back to top">${icon('up')}</button>`;
 
-    if (page !== 'product.html') {
+    if (page !== 'product.html' && page !== 'login.html') {
       const wa = document.createElement('a');
       wa.id = 'wa-float';
       wa.href = 'https://wa.me/' + window.AURELLE_WA + '?text=' + encodeURIComponent('Hello Aurelle! I need help with...');
@@ -505,7 +505,8 @@
   /* ---------- init ---------- */
   function init() {
     if (window.AURELLE_REQUIRE_LOGIN && !Auth.user() && page !== 'login.html') { location.replace('login.html?next=' + encodeURIComponent(page + location.search)); return; }
-    header(); renderAuth(); footer(); syncCartBadge(); syncWishButtons(); observeReveal();
+    if (page !== 'login.html') header();
+    renderAuth(); footer(); syncCartBadge(); syncWishButtons(); observeReveal();
   }
   window.Aurelle = { Auth, waIcon, $, $$, fmt, byId, catName, Cart, Wish, toast, icon, star, stars, productCard, renderProducts, syncWishButtons, observeReveal, FREE_SHIP, SHIPPING, IMG, store };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
