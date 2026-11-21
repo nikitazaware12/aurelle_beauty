@@ -262,6 +262,7 @@
   function header() {
     const el = $('#site-header');
     if (!el) return;
+    el.classList.add('contents'); /* lets the navbar stay sticky for the whole page */
     el.innerHTML = `
     <div class="overflow-hidden bg-plum text-xs text-white">
       <div class="flex w-max animate-marquee whitespace-nowrap py-1.5">
