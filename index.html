@@ -68,111 +68,107 @@
     </section>
 
     <!-- ================= TRUST STRIP ================= -->
-    <section class="border-y border-plum/10 bg-white">
-      <div class="container-x grid grid-cols-2 gap-6 py-8 lg:grid-cols-4" id="trust"></div>
+    <section class="border-y border-plum/[.07] bg-white">
+      <div class="container-x grid grid-cols-2 gap-4 py-4 lg:grid-cols-4" id="trust"></div>
     </section>
 
     <!-- ================= CATEGORIES ================= -->
-    <section class="container-x py-12 sm:py-14">
-      <div class="mb-7 flex flex-wrap items-end justify-between gap-4" data-reveal>
+    <section class="container-x py-8 sm:py-10">
+      <div class="mb-5 flex flex-wrap items-end justify-between gap-4" data-reveal>
         <div>
           <span class="eyebrow">Shop by category</span>
-          <h2 class="section-title mt-3">Find your <em class="text-blush-500">ritual</em></h2>
+          <h2 class="section-title mt-2">Find your <em class="text-blush-500">ritual</em></h2>
         </div>
         <a href="categories.html" class="link-u text-sm font-semibold">View all categories →</a>
       </div>
-      <div id="cat-grid" class="grid auto-rows-[190px] grid-cols-2 gap-4 sm:auto-rows-[230px] lg:grid-cols-4 lg:gap-5"></div>
+      <div id="cat-grid" class="grid auto-rows-[130px] grid-cols-2 gap-3 sm:auto-rows-[160px] sm:gap-4 lg:grid-cols-4"></div>
     </section>
 
     <!-- ================= BEST SELLERS ================= -->
-    <section class="bg-white py-12 sm:py-14">
+    <section class="bg-white py-8 sm:py-10">
       <div class="container-x">
         <div class="mb-5 text-center" data-reveal>
           <span class="eyebrow">Customer favourites</span>
-          <h2 class="section-title mt-3">Trending right now</h2>
-          <p class="mx-auto mt-3 max-w-xl text-plum/60">Hand-picked favourites loved by thousands. Hover a card to peek at a second angle.</p>
+          <h2 class="section-title mt-2">Trending right now</h2>
+          <p class="mx-auto mt-1 max-w-xl text-sm text-plum/60">Hand-picked favourites loved by thousands.</p>
         </div>
-        <div id="tabs" class="noscroll-x mb-5 flex gap-3 overflow-x-auto pb-2 sm:justify-center" role="tablist"></div>
-        <div id="home-products" class="grid grid-cols-2 gap-4 sm:gap-4 lg:grid-cols-4"></div>
-        <div class="mt-8 text-center"><a href="shop.html" class="btn btn-dark !px-10">View all products <svg class="arrow h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a></div>
+        <div id="tabs" class="noscroll-x mb-5 flex gap-2 overflow-x-auto pb-1 sm:justify-center" role="tablist"></div>
+        <div id="home-products" class="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4"></div>
+        <div class="mt-6 text-center"><a href="shop.html" class="btn btn-dark !px-6">View all products <svg class="arrow h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a></div>
       </div>
     </section>
 
     <!-- ================= PROMO BANNER ================= -->
-    <section class="container-x py-12 sm:py-14">
-      <div class="relative grid overflow-hidden rounded-[2rem] bg-plum text-white shadow-lift lg:grid-cols-2" data-reveal>
-        <div class="relative z-10 flex flex-col justify-center p-8 sm:p-8 lg:p-7">
-          <span class="inline-flex w-fit items-center gap-2 rounded-full bg-blush-500 px-4 py-1.5 text-xs font-bold uppercase tracking-widest">Limited time</span>
-          <h2 class="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">Glow Week — <span class="italic text-blush-300">up to 30% off</span></h2>
-          <p class="mt-4 max-w-md text-white/75">Serums, oils, gift sets and more. Use code <b class="text-blush-300">AURELLE10</b> at checkout for an extra 10% off.</p>
-          <div id="countdown" class="mt-8 flex gap-3 sm:gap-4" aria-live="off"></div>
-          <div class="mt-9"><a href="shop.html?sale=1" class="btn btn-light !px-8 !py-4">Shop the sale <svg class="arrow h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a></div>
+    <section class="container-x py-8 sm:py-10">
+      <div class="grid overflow-hidden rounded-2xl bg-blush-100 lg:grid-cols-2" data-reveal>
+        <div class="flex flex-col justify-center p-5 sm:p-8">
+          <span class="eyebrow">Limited time</span>
+          <h2 class="mt-2 text-2xl font-medium leading-tight sm:text-3xl">Glow Week — <em class="text-blush-600">up to 30% off</em></h2>
+          <p class="mt-2 max-w-md text-sm text-plum/70">Serums, oils, gift sets and more. Use code <b class="font-semibold">AURELLE10</b> for an extra 10% off.</p>
+          <div id="countdown" class="mt-4 flex gap-2" aria-live="off"></div>
+          <div class="mt-5"><a href="shop.html?sale=1" class="btn btn-dark">Shop the sale <svg class="arrow h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a></div>
         </div>
-        <div class="group relative min-h-[300px] overflow-hidden lg:min-h-full">
-          <img src="assets/img/img-12.jpg" alt="Two friends applying a face serum" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-r from-plum via-plum/30 to-transparent max-lg:bg-gradient-to-t"></div>
+        <div class="relative min-h-[200px] lg:min-h-full">
+          <img src="assets/img/img-12.jpg" alt="Two friends applying a face serum" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
         </div>
       </div>
     </section>
 
     <!-- ================= RITUALS ================= -->
-    <section class="container-x pb-12 sm:pb-14">
-      <div class="mb-7 text-center" data-reveal>
+    <section class="container-x pb-8 sm:pb-10">
+      <div class="mb-5 text-center" data-reveal>
         <span class="eyebrow">Self-care rituals</span>
-        <h2 class="section-title mt-3">Pamper like a pro</h2>
+        <h2 class="section-title mt-2">Pamper like a pro</h2>
       </div>
-      <div class="grid gap-6 md:grid-cols-3">
-        <a href="shop.html?cat=skincare" class="group relative block aspect-[3/4] overflow-hidden rounded-[2rem] shadow-soft" data-reveal>
-          <img src="assets/img/img-15.jpg" alt="Facial mask treatment" class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-plum/85 via-plum/10 to-transparent"></div>
-          <div class="absolute inset-x-0 bottom-0 p-7 text-white transition-transform duration-500 group-hover:-translate-y-2">
-            <p class="text-xs font-semibold uppercase tracking-widest text-blush-300">Skin</p>
-            <h3 class="mt-1 text-2xl font-semibold">The glow facial</h3>
-            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-500 group-hover:max-h-20 group-hover:opacity-100">Cleanse, mask and treat for spa-worthy skin at home.</p>
-            <span class="mt-3 inline-flex items-center gap-2 text-sm font-semibold">Shop skincare <svg class="h-4 w-4 transition-transform group-hover:translate-x-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></span>
+      <div class="grid gap-3 sm:grid-cols-3 sm:gap-4">
+        <a href="shop.html?cat=skincare" class="group relative block aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[3/4]" data-reveal>
+          <img src="assets/img/img-15.jpg" alt="Facial mask treatment" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-plum/70 via-plum/5 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 p-4 text-white">
+            <p class="text-[11px] uppercase tracking-widest text-white/70">Skin</p>
+            <h3 class="font-display text-lg font-medium">The glow facial</h3>
+            <span class="mt-1 inline-flex items-center gap-1 text-xs font-medium">Shop skincare <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></span>
           </div>
         </a>
-        <a href="shop.html?cat=hair" class="group relative block aspect-[3/4] overflow-hidden rounded-[2rem] shadow-soft md:mt-10" data-reveal style="transition-delay:100ms">
-          <img src="assets/img/img-16.jpg" alt="Salon blow-dry" class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-plum/85 via-plum/10 to-transparent"></div>
-          <div class="absolute inset-x-0 bottom-0 p-7 text-white transition-transform duration-500 group-hover:-translate-y-2">
-            <p class="text-xs font-semibold uppercase tracking-widest text-blush-300">Hair</p>
-            <h3 class="mt-1 text-2xl font-semibold">Salon-smooth blowout</h3>
-            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-500 group-hover:max-h-20 group-hover:opacity-100">Shine, strength and heat protection in every strand.</p>
-            <span class="mt-3 inline-flex items-center gap-2 text-sm font-semibold">Shop hair care <svg class="h-4 w-4 transition-transform group-hover:translate-x-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></span>
+        <a href="shop.html?cat=hair" class="group relative block aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[3/4]" data-reveal>
+          <img src="assets/img/img-16.jpg" alt="Salon blow-dry" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-plum/70 via-plum/5 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 p-4 text-white">
+            <p class="text-[11px] uppercase tracking-widest text-white/70">Hair</p>
+            <h3 class="font-display text-lg font-medium">Salon-smooth blowout</h3>
+            <span class="mt-1 inline-flex items-center gap-1 text-xs font-medium">Shop hair care <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></span>
           </div>
         </a>
-        <a href="shop.html?cat=nails" class="group relative block aspect-[3/4] overflow-hidden rounded-[2rem] shadow-soft" data-reveal style="transition-delay:200ms">
-          <img src="assets/img/img-24.jpg" alt="Nail art with friends" class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-plum/85 via-plum/10 to-transparent"></div>
-          <div class="absolute inset-x-0 bottom-0 p-7 text-white transition-transform duration-500 group-hover:-translate-y-2">
-            <p class="text-xs font-semibold uppercase tracking-widest text-blush-300">Nails</p>
-            <h3 class="mt-1 text-2xl font-semibold">Colour that pops</h3>
-            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-500 group-hover:max-h-20 group-hover:opacity-100">Chip-resistant polishes in glossy, gel-like shades.</p>
-            <span class="mt-3 inline-flex items-center gap-2 text-sm font-semibold">Shop nails <svg class="h-4 w-4 transition-transform group-hover:translate-x-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></span>
+        <a href="shop.html?cat=nails" class="group relative block aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[3/4]" data-reveal>
+          <img src="assets/img/img-24.jpg" alt="Nail art with friends" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-plum/70 via-plum/5 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 p-4 text-white">
+            <p class="text-[11px] uppercase tracking-widest text-white/70">Nails</p>
+            <h3 class="font-display text-lg font-medium">Colour that pops</h3>
+            <span class="mt-1 inline-flex items-center gap-1 text-xs font-medium">Shop nails <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></span>
           </div>
         </a>
       </div>
     </section>
 
     <!-- ================= TESTIMONIALS ================= -->
-    <section class="bg-gradient-to-b from-blush-100/70 to-cream py-12 sm:py-14">
+    <section class="bg-white py-8 sm:py-10">
       <div class="container-x">
-        <div class="mb-7 text-center" data-reveal>
+        <div class="mb-5 text-center" data-reveal>
           <span class="eyebrow">Loved by you</span>
-          <h2 class="section-title mt-3">Real people, real glow</h2>
+          <h2 class="section-title mt-2">Real people, real glow</h2>
         </div>
-        <div class="grid gap-6 md:grid-cols-3" id="reviews"></div>
+        <div class="grid gap-3 sm:gap-4 md:grid-cols-3" id="reviews"></div>
       </div>
     </section>
 
     <!-- ================= GALLERY ================= -->
-    <section class="container-x py-12 sm:py-14">
+    <section class="container-x py-8 sm:py-10">
       <div class="mb-5 flex flex-wrap items-end justify-between gap-4" data-reveal>
-        <div><span class="eyebrow">@aurelle.beauty</span><h2 class="section-title mt-3">Beauty in the wild</h2></div>
+        <div><span class="eyebrow">@aurelle.beauty</span><h2 class="section-title mt-2">Beauty in the wild</h2></div>
         <a href="#" class="link-u text-sm font-semibold">Follow us on Instagram →</a>
       </div>
-      <div id="gallery" class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6"></div>
+      <div id="gallery" class="grid grid-cols-3 gap-2 sm:gap-3 lg:grid-cols-6"></div>
     </section>
   </main>
 

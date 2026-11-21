@@ -16,10 +16,9 @@
   <main>
     <!-- page banner -->
     <section class="relative overflow-hidden bg-gradient-to-br from-blush-100 via-cream to-sand">
-      <div class="absolute -right-10 -top-7 h-56 w-56 animate-blob bg-blush-200/60"></div>
       <div class="container-x relative py-14 text-center sm:py-12">
         <nav class="text-xs uppercase tracking-widest text-plum/60" aria-label="Breadcrumb"><a href="index.html" class="hover:text-blush-600">Home</a> / <span class="text-plum">Shop</span></nav>
-        <h1 id="shop-title" class="mt-4 text-4xl font-semibold sm:text-5xl">Shop all products</h1>
+        <h1 id="shop-title" class="mt-4 text-3xl font-medium sm:text-4xl">Shop all products</h1>
         <p id="shop-sub" class="mx-auto mt-4 max-w-xl text-plum/65">Clean, cruelty-free formulas for skin, hair, body and beyond.</p>
       </div>
     </section>
@@ -45,27 +44,27 @@
         </div>
       </div>
 
-      <div class="grid gap-7 lg:grid-cols-[270px_1fr]">
+      <div class="grid gap-5 lg:grid-cols-[270px_1fr]">
         <!-- sidebar -->
         <div id="filter-wrap" class="invisible fixed inset-0 z-[65] lg:visible lg:static lg:z-auto">
           <div id="filter-backdrop" class="absolute inset-0 bg-plum/50 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"></div>
           <aside id="filter-panel" class="absolute left-0 top-0 h-full w-[85%] max-w-sm -translate-x-full overflow-y-auto bg-cream p-6 transition-transform duration-500 lg:sticky lg:top-28 lg:h-auto lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:p-0">
             <div class="mb-5 flex items-center justify-between lg:hidden">
-              <h2 class="text-2xl font-semibold">Filters</h2>
+              <h2 class="text-xl font-medium">Filters</h2>
               <button id="close-filters" class="icon-btn" aria-label="Close filters"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
             </div>
-            <div class="space-y-8 rounded-3xl bg-white p-6 shadow-soft">
+            <div class="space-y-5 rounded-2xl border border-plum/[.06] bg-white p-4">
               <div>
-                <h3 class="mb-4 font-sans text-sm font-bold uppercase tracking-widest">Category</h3>
+                <h3 class="mb-4 font-sans text-sm font-medium uppercase tracking-widest">Category</h3>
                 <div id="f-cats" class="flex flex-col gap-1"></div>
               </div>
               <div>
-                <div class="mb-4 flex items-center justify-between"><h3 class="font-sans text-sm font-bold uppercase tracking-widest">Max price</h3><span id="f-price-val" class="rounded-full bg-blush-100 px-3 py-1 text-sm font-bold text-blush-700">₹4,000</span></div>
+                <div class="mb-4 flex items-center justify-between"><h3 class="font-sans text-sm font-medium uppercase tracking-widest">Max price</h3><span id="f-price-val" class="rounded-full bg-blush-100 px-3 py-1 text-sm font-semibold text-blush-700">₹4,000</span></div>
                 <input id="f-price" type="range" class="range" min="200" max="4000" step="100" value="4000" aria-label="Maximum price">
                 <div class="mt-2 flex justify-between text-xs text-plum/50"><span>₹200</span><span>₹4,000</span></div>
               </div>
               <div>
-                <h3 class="mb-4 font-sans text-sm font-bold uppercase tracking-widest">Rating</h3>
+                <h3 class="mb-4 font-sans text-sm font-medium uppercase tracking-widest">Rating</h3>
                 <div id="f-rating" class="flex flex-wrap gap-2"></div>
               </div>
               <div class="space-y-3 text-sm font-medium">
@@ -82,10 +81,10 @@
           <div class="mb-5 flex items-center justify-between">
             <p id="f-count" class="text-sm text-plum/60"></p>
           </div>
-          <div id="shop-grid" class="grid grid-cols-2 gap-4 sm:gap-4 xl:grid-cols-3"></div>
-          <div id="shop-empty" class="hidden rounded-3xl bg-white p-8 text-center shadow-soft">
+          <div id="shop-grid" class="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4"></div>
+          <div id="shop-empty" class="hidden rounded-2xl bg-white p-6 text-center shadow-soft">
             <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blush-100 text-blush-600"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"/></svg></div>
-            <h3 class="mt-5 text-2xl font-semibold">Nothing matches yet</h3>
+            <h3 class="mt-5 text-xl font-medium">Nothing matches yet</h3>
             <p class="mt-2 text-plum/60">Try removing a filter or searching for something else.</p>
             <button id="empty-reset" class="btn btn-primary mt-6">Clear all filters</button>
           </div>

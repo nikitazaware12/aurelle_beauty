@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login — Aurelle Beauty</title>
+  <meta name="description" content="Log in or create your Aurelle account.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="min-h-[96px]"></header>
+
+  <main class="bg-gradient-to-b from-blush-50 to-cream">
+    <section class="container-x flex min-h-[calc(100vh-200px)] items-center justify-center py-8 sm:py-10">
+      <div class="grid w-full max-w-3xl overflow-hidden rounded-2xl border border-plum/[.06] bg-white md:grid-cols-[1fr_1.1fr]">
+
+        <!-- image panel -->
+        <div class="group relative hidden md:block">
+          <img src="assets/img/img-17.jpg" alt="Peach skincare flat lay" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-plum/70 via-plum/10 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+            <p class="font-display text-2xl font-medium leading-snug">Your glow,<br><em>saved for you.</em></p>
+            <p class="mt-2 text-xs text-white/75">Track orders, save favourites and check out faster.</p>
+          </div>
+        </div>
+
+        <!-- form panel -->
+        <div class="p-5 sm:p-8">
+          <div class="mb-5 grid grid-cols-2 rounded-full bg-cream p-1 text-sm font-medium" role="tablist">
+            <button type="button" role="tab" id="tab-login" class="rounded-full py-2 transition-all duration-200" aria-selected="true">Login</button>
+            <button type="button" role="tab" id="tab-signup" class="rounded-full py-2 transition-all duration-200" aria-selected="false">Sign up</button>
+          </div>
+
+          <h1 id="form-title" class="text-2xl font-medium">Welcome back</h1>
+          <p id="form-sub" class="mt-1 text-sm text-plum/60">Log in to continue shopping.</p>
+
+          <form id="auth-form" class="mt-5 space-y-3" novalidate>
+            <label id="name-wrap" class="hidden text-xs font-medium">Full name
+              <input id="f-name" name="name" autocomplete="name" class="field mt-1" placeholder="Jane Doe">
+            </label>
+            <label class="block text-xs font-medium">Email
+              <input id="f-email" name="email" type="email" autocomplete="email" class="field mt-1" placeholder="you@email.com">
+            </label>
+            <label class="block text-xs font-medium">
+              <span class="flex items-center justify-between">Password <button type="button" id="forgot" class="font-normal text-blush-600 hover:underline">Forgot?</button></span>
+              <span class="relative mt-1 block">
+                <input id="f-pass" name="password" type="password" autocomplete="current-password" class="field !pr-11" placeholder="••••••••">
+                <button type="button" id="toggle-pass" class="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-plum/50 transition-colors hover:bg-blush-100 hover:text-blush-600" aria-label="Show password">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zm10 3a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                </button>
+              </span>
+            </label>
+
+            <p id="auth-error" class="hidden rounded-xl bg-blush-50 px-3 py-2 text-xs text-blush-700" role="alert"></p>
+
+            <button id="auth-submit" class="btn btn-primary w-full">Login</button>
+          </form>
+
+          <p class="mt-4 text-center text-xs text-plum/55"><span id="switch-text">New to Aurelle?</span> <button type="button" id="switch-btn" class="font-medium text-blush-600 hover:underline">Create an account</button></p>
+          <p class="mt-3 text-center text-[11px] text-plum/40">Demo store · accounts are saved only in this browser.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      const { $, Auth, toast } = window.Aurelle;
+
+      /* already logged in → go home */
+      if (Auth.user()) { location.replace('index.html'); return; }
+
+      /* where to go after login (local pages only) */
+      const nextRaw = new URLSearchParams(location.search).get('next') || '';
+      const next = /^[a-z0-9_-]+\.html(\?[^\s]*)?$/i.test(nextRaw) && !/^login\.html/i.test(nextRaw) ? nextRaw : 'index.html';
+
+      let mode = new URLSearchParams(location.search).get('mode') === 'signup' ? 'signup' : 'login';
+      const err = $('#auth-error');
+      const showErr = (m) => { err.textContent = m; err.classList.remove('hidden'); };
+
+      function setMode(m) {
+        mode = m; err.classList.add('hidden');
+        const su = m === 'signup';
+        $('#name-wrap').classList.toggle('hidden', !su); $('#name-wrap').classList.toggle('block', su);
+        $('#form-title').textContent = su ? 'Create your account' : 'Welcome back';
+        $('#form-sub').textContent = su ? 'Join Aurelle in a few seconds.' : 'Log in to continue shopping.';
+        $('#auth-submit').textContent = su ? 'Create account' : 'Login';
+        $('#switch-text').textContent = su ? 'Already have an account?' : 'New to Aurelle?';
+        $('#switch-btn').textContent = su ? 'Login' : 'Create an account';
+        $('#forgot').classList.toggle('hidden', su);
+        $('#f-pass').autocomplete = su ? 'new-password' : 'current-password';
+        [['#tab-login', !su], ['#tab-signup', su]].forEach(([id, on]) => {
+          const t = $(id); t.setAttribute('aria-selected', on);
+          t.classList.toggle('bg-white', on); t.classList.toggle('shadow-sm', on); t.classList.toggle('text-plum/55', !on);
+        });
+      }
+      $('#tab-login').onclick = () => setMode('login');
+      $('#tab-signup').onclick = () => setMode('signup');
+      $('#switch-btn').onclick = () => setMode(mode === 'login' ? 'signup' : 'login');
+      $('#forgot').onclick = () => toast('Password reset is not available in this demo.', 'info');
+
+      /* show / hide password */
+      $('#toggle-pass').onclick = () => {
+        const i = $('#f-pass'); const show = i.type === 'password';
+        i.type = show ? 'text' : 'password';
+        $('#toggle-pass').setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      };
+
+      $('#auth-form').addEventListener('submit', async (e) => {
+        e.preventDefault(); err.classList.add('hidden');
+        const name = $('#f-name').value.trim(), email = $('#f-email').value.trim(), pass = $('#f-pass').value;
+        if (mode === 'signup' && name.length < 2) return showErr('Please enter your full name.');
+        if (!/^\S+@\S+\.\S+$/.test(email)) return showErr('Please enter a valid email address.');
+        if (pass.length < 6) return showErr('Password must be at least 6 characters.');
+        const btn = $('#auth-submit'); btn.disabled = true; btn.classList.add('opacity-70');
+        try {
+          if (mode === 'signup') await Auth.signup(name, email, pass); else await Auth.login(email, pass);
+          const u = Auth.user();
+          toast(`Welcome${mode === 'login' ? ' back' : ''}, ${u.name.split(' ')[0]}!`);
+          setTimeout(() => { location.href = next; }, 700);
+        } catch (ex) {
+          showErr(ex.message); btn.disabled = false; btn.classList.remove('opacity-70');
+        }
+      });
+      setMode(mode);
+    })();
+  </script>
+</body>
+</html>

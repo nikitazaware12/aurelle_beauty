@@ -31,9 +31,9 @@ module.exports = {
         },
       },
       boxShadow: {
-        soft: '0 10px 40px -14px rgba(59,29,47,.20)',
-        lift: '0 28px 60px -20px rgba(208,46,99,.38)',
-        glow: '0 0 0 6px rgba(232,77,122,.15)',
+        soft: '0 8px 24px -12px rgba(59,29,47,.16)',
+        lift: '0 12px 28px -14px rgba(59,29,47,.22)',
+        glow: '0 0 0 3px rgba(232,77,122,.12)',
       },
       keyframes: {
         float: {

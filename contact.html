@@ -16,12 +16,11 @@
   <main>
     <!-- everything fits in one screen on desktop -->
     <section class="relative overflow-hidden bg-gradient-to-br from-blush-100 via-cream to-sand">
-      <div class="absolute -right-10 -top-16 h-44 w-44 animate-blob bg-blush-200/60"></div>
       <div class="container-x relative py-4 sm:py-5">
         <div class="mb-3 flex flex-wrap items-end justify-between gap-2">
           <div>
             <nav class="text-[11px] uppercase tracking-widest text-plum/60"><a href="index.html" class="hover:text-blush-600">Home</a> / <span class="text-plum">Contact</span></nav>
-            <h1 class="mt-1 text-2xl font-semibold sm:text-3xl">Let’s <em class="text-blush-500">talk</em> beauty</h1>
+            <h1 class="mt-1 text-xl font-medium sm:text-2xl">Let’s <em class="text-blush-500">talk</em> beauty</h1>
           </div>
           <p class="hidden text-sm text-plum/65 md:block">Your message goes straight to our WhatsApp.</p>
         </div>
@@ -39,7 +38,7 @@
           <!-- RIGHT: form -->
           <form id="contact-form" class="rounded-2xl bg-white p-4 shadow-soft sm:p-5" novalidate>
             <div class="mb-3 flex items-center justify-between gap-3">
-              <h2 class="text-xl font-semibold">Send us a message</h2>
+              <h2 class="text-xl font-medium">Send us a message</h2>
               <span class="inline-flex items-center gap-1.5 rounded-full bg-[#25D366]/15 px-2.5 py-1 text-[11px] font-semibold text-[#128C7E]" id="wa-pill"></span>
             </div>
 
@@ -58,7 +57,7 @@
               <label class="block text-xs font-semibold sm:col-span-2">Message *<textarea name="msg" required rows="3" class="field mt-1 resize-none !rounded-xl !py-2" placeholder="How can we help?"></textarea></label>
             </div>
 
-            <button class="btn btn-wa mt-3 w-full !py-3" id="send"></button>
+            <button class="btn btn-wa mt-3 w-full !py-2.5" id="send"></button>
             <p class="mt-1.5 text-center text-[11px] text-plum/50">Opens WhatsApp with your message ready to send.</p>
           </form>
         </div>
@@ -91,9 +90,9 @@
         ['wa', 'WhatsApp', 'Chat instantly', 'https://wa.me/' + WA, 'bg-[#25D366]/15 text-[#128C7E] group-hover:bg-[#25D366] group-hover:text-white', 'text-[#128C7E]'],
       ];
       $('#info').innerHTML = tiles.map(([i, t, d, href, ic, tc]) => `
-        <a href="${href}" ${href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} class="group flex items-center gap-2.5 rounded-2xl bg-white p-2.5 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift">
+        <a href="${href}" ${href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} class="group flex items-center gap-2.5 rounded-2xl bg-white p-2.5 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft">
           <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110 ${ic}">${i === 'wa' ? waIcon('h-5 w-5') : icon(i, 'h-4 w-4')}</span>
-          <span class="min-w-0 leading-tight"><span class="block text-[10px] font-bold uppercase tracking-widest ${tc}">${t}</span><span class="block truncate text-[13px] font-medium">${d}</span></span>
+          <span class="min-w-0 leading-tight"><span class="block text-[10px] font-semibold uppercase tracking-widest ${tc}">${t}</span><span class="block truncate text-[13px] font-medium">${d}</span></span>
         </a>`).join('');
 
       /* map */

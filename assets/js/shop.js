@@ -19,7 +19,7 @@
     catsEl.innerHTML = all.map((c) => {
       const n = c.id === 'all' ? window.PRODUCTS.length : window.PRODUCTS.filter((p) => p.cat === c.id).length;
       const on = state.cat === c.id;
-      return `<button data-cat="${c.id}" class="group flex items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm font-medium transition-all duration-300 hover:translate-x-1 hover:bg-blush-100 ${on ? 'bg-blush-500 !text-white shadow-lg shadow-blush-500/30 hover:!bg-blush-500' : ''}">
+      return `<button data-cat="${c.id}" class="group flex items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm font-medium transition-all duration-300 hover:translate-x-1 hover:bg-blush-100 ${on ? 'bg-blush-500 !text-white hover:!bg-blush-500' : ''}">
         <span>${c.name}</span><span class="rounded-full px-2 py-0.5 text-xs ${on ? 'bg-white/25' : 'bg-plum/5 text-plum/60'}">${n}</span></button>`;
     }).join('');
   }

@@ -15,10 +15,9 @@
 
   <main>
     <section class="relative overflow-hidden bg-gradient-to-br from-blush-100 via-cream to-sand">
-      <div class="absolute -left-10 -top-7 h-56 w-56 animate-blob bg-blush-200/60"></div>
       <div class="container-x relative py-14 text-center sm:py-12">
         <nav class="text-xs uppercase tracking-widest text-plum/60"><a href="index.html" class="hover:text-blush-600">Home</a> / <span class="text-plum">Categories</span></nav>
-        <h1 class="mt-4 text-4xl font-semibold sm:text-5xl">Explore by <em class="text-blush-500">category</em></h1>
+        <h1 class="mt-4 text-3xl font-medium sm:text-4xl">Explore by <em class="text-blush-500">category</em></h1>
         <p class="mx-auto mt-4 max-w-xl text-plum/65">From everyday skincare to statement fragrance — everything you need to look and feel your best.</p>
       </div>
     </section>
@@ -49,12 +48,12 @@
         const lo = Math.min(...items.map((p) => p.price));
         const flip = i % 2 === 1;
         return `
-        <article class="grid items-center gap-8 lg:grid-cols-2 lg:gap-7" data-reveal>
-          <a href="shop.html?cat=${c.id}" class="group relative block aspect-[5/4] overflow-hidden rounded-[2rem] shadow-lift ${flip ? 'lg:order-2' : ''}">
-            <img src="${IMG + c.img}" alt="${c.name}" loading="lazy" class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110">
+        <article class="grid items-center gap-6 lg:grid-cols-2 lg:gap-5" data-reveal>
+          <a href="shop.html?cat=${c.id}" class="group relative block aspect-[16/10] overflow-hidden rounded-2xl ${flip ? 'lg:order-2' : ''}">
+            <img src="${IMG + c.img}" alt="${c.name}" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
             <span class="absolute inset-0 bg-gradient-to-t from-plum/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-            <span class="absolute left-5 top-5 font-display text-5xl font-bold text-white/90 drop-shadow">${num(i)}</span>
-            <span class="absolute bottom-5 right-5 flex h-14 w-14 translate-y-4 items-center justify-center rounded-full bg-white text-plum opacity-0 shadow-lift transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">${icon('arrow', 'h-6 w-6')}</span>
+            <span class="absolute left-5 top-5 font-display text-4xl font-semibold text-white/90 drop-shadow">${num(i)}</span>
+            <span class="absolute bottom-5 right-5 flex h-14 w-14 translate-y-4 items-center justify-center rounded-full bg-white text-plum opacity-0 shadow-soft transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">${icon('arrow', 'h-6 w-6')}</span>
           </a>
           <div>
             <span class="eyebrow">${items.length} products · from ${fmt(lo)}</span>
@@ -63,11 +62,11 @@
             <div class="mt-6 flex gap-3">
               ${items.slice(0, 3).map((p) => `
               <a href="product.html?id=${p.id}" class="group/p w-24 sm:w-28" title="${p.name}">
-                <span class="block aspect-square overflow-hidden rounded-2xl bg-sand shadow-soft transition-all duration-300 group-hover/p:-translate-y-2 group-hover/p:shadow-lift"><img src="${IMG + p.img}" alt="${p.name}" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover/p:scale-110"></span>
+                <span class="block aspect-square overflow-hidden rounded-2xl bg-sand shadow-soft transition-all duration-300 group-hover/p:-translate-y-2 group-hover/p:shadow-soft"><img src="${IMG + p.img}" alt="${p.name}" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover/p:scale-110"></span>
                 <span class="mt-2 block line-clamp-1 text-xs font-medium group-hover/p:text-blush-600">${p.name}</span>
               </a>`).join('')}
             </div>
-            <a href="shop.html?cat=${c.id}" class="btn btn-primary mt-8 !px-8">Shop ${c.name} ${icon('arrow', 'h-4 w-4 arrow')}</a>
+            <a href="shop.html?cat=${c.id}" class="btn btn-primary mt-6 !px-5">Shop ${c.name} ${icon('arrow', 'h-4 w-4 arrow')}</a>
           </div>
         </article>`;
       }).join('');
@@ -79,7 +78,7 @@
         ['Fragrance gifting', 'fragrance', 'heart', ''],
       ];
       $('#needs').innerHTML = needs.map(([t, c, ic, extra], i) => `
-        <a href="shop.html?${c === 'all' ? '' : 'cat=' + c}${extra}" class="card group flex flex-col items-center gap-4 p-6 text-center sm:p-8" data-reveal style="transition-delay:${i * 80}ms">
+        <a href="shop.html?${c === 'all' ? '' : 'cat=' + c}${extra}" class="card group flex flex-col items-center gap-4 p-6 text-center sm:p-6" data-reveal style="transition-delay:${i * 80}ms">
           <span class="flex h-16 w-16 items-center justify-center rounded-full bg-blush-100 text-blush-600 transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-blush-500 group-hover:text-white">${icon(ic, 'h-7 w-7')}</span>
           <span class="font-display text-lg font-semibold">${t}</span>
         </a>`).join('');
