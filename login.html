@@ -60,7 +60,8 @@
           </form>
 
           <p class="mt-4 text-center text-xs text-plum/55"><span id="switch-text">New to Aurelle?</span> <button type="button" id="switch-btn" class="font-medium text-blush-600 hover:underline">Create an account</button></p>
-          <p class="mt-3 text-center text-[11px] text-plum/40">Demo store · accounts are saved only in this browser.</p>
+          <div class="mt-3 flex items-center justify-between gap-2 rounded-xl bg-cream px-3 py-2 text-[11px] text-plum/65"><span>Admin demo: <b class="font-medium">admin@aurelle.com</b> / <b class="font-medium">admin123</b></span><button type="button" id="use-admin" class="shrink-0 font-medium text-blush-600 hover:underline">Use admin</button></div>
+          <p class="mt-2 text-center text-[11px] text-plum/40">Demo store · accounts are saved only in this browser.</p>
         </div>
       </div>
     </section>
@@ -104,6 +105,7 @@
       $('#tab-login').onclick = () => setMode('login');
       $('#tab-signup').onclick = () => setMode('signup');
       $('#switch-btn').onclick = () => setMode(mode === 'login' ? 'signup' : 'login');
+      $('#use-admin').onclick = () => { setMode('login'); $('#f-email').value = 'admin@aurelle.com'; $('#f-pass').value = 'admin123'; };
       $('#forgot').onclick = () => toast('Password reset is not available in this demo.', 'info');
 
       /* show / hide password */

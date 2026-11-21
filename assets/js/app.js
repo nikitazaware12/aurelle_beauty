@@ -98,6 +98,7 @@
   };
 
   /* ---------- auth (front-end demo: accounts live in this browser only) ---------- */
+  const ADMIN = { name: 'Aurelle Admin', email: 'admin@aurelle.com', pass: 'admin123', role: 'admin' };
   const Auth = {
     user() { return store.get('aurelle_user', null); },
     users() { return store.get('aurelle_users', []); },
@@ -112,6 +113,7 @@
     },
     async signup(name, email, pass) {
       email = email.trim().toLowerCase();
+      if (email === ADMIN.email) throw new Error('This email is reserved. Please use another email.');
       const users = this.users();
       if (users.some((u) => u.email === email)) throw new Error('An account with this email already exists. Please log in.');
       users.push({ name: name.trim(), email, hash: await this.hash(pass) });
@@ -120,6 +122,10 @@
     },
     async login(email, pass) {
       email = email.trim().toLowerCase();
+      if (email === ADMIN.email) {
+        if (pass !== ADMIN.pass) throw new Error('Incorrect password. Please try again.');
+        return this.start({ name: ADMIN.name, email: ADMIN.email, role: 'admin' });
+      }
       const u = this.users().find((x) => x.email === email);
       if (!u) throw new Error('No account found for this email. Please sign up first.');
       if (u.hash !== (await this.hash(pass))) throw new Error('Incorrect password. Please try again.');
@@ -373,7 +379,8 @@
       if (menu) menu.innerHTML = `<a href="login.html${next}" class="btn btn-dark w-full">${icon('user', 'h-4 w-4')} Login / Sign up</a>`;
       return;
     }
-    const first = u.name.split(' ')[0];
+    const isAdmin = u.role === 'admin';
+    const first = isAdmin ? 'Admin' : u.name.split(' ')[0];
     const ini = u.name.trim()[0].toUpperCase();
     slot.innerHTML = `
       <button id="user-btn" class="flex items-center gap-2 rounded-full border border-plum/10 bg-white p-1 transition-colors hover:border-blush-300 sm:pr-3" aria-haspopup="true" aria-expanded="false" aria-controls="user-pop">
@@ -384,9 +391,9 @@
       <div id="user-pop" class="invisible absolute right-0 top-full z-50 mt-2 w-64 origin-top-right scale-95 rounded-2xl border border-plum/[.08] bg-white p-3 opacity-0 shadow-soft transition-all duration-200" role="dialog" aria-label="Account">
         <div class="flex items-center gap-3 border-b border-plum/[.07] pb-3">
           <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blush-100 font-medium text-blush-700">${ini}</span>
-          <span class="min-w-0 leading-tight"><span class="block truncate text-sm font-medium">${u.name}</span><span class="block truncate text-xs text-plum/55">${u.email}</span></span>
+          <span class="min-w-0 leading-tight"><span class="block truncate text-sm font-medium">${u.name}${isAdmin ? ' <span class="ml-1 rounded-full bg-plum px-2 py-0.5 align-middle text-[10px] font-medium text-white">Admin</span>' : ''}</span><span class="block truncate text-xs text-plum/55">${u.email}</span></span>
         </div>
-        <p class="py-3 text-xs text-plum/65">Hi ${first}, you’re logged in. 👋</p>
+        <p class="py-3 text-xs text-plum/65">${isAdmin ? 'Signed in as administrator.' : 'Hi ' + first + ', you’re logged in.'}</p>
         <button data-logout class="btn btn-outline w-full !py-2">${icon('logout', 'h-4 w-4')} Log out</button>
       </div>`;
     if (menu) menu.innerHTML = `
@@ -409,6 +416,7 @@
     if (e.target.closest('[data-logout]')) {
       Auth.logout();
       toast('You have been logged out. See you soon!');
+      if (window.AURELLE_REQUIRE_LOGIN) setTimeout(() => { location.href = 'login.html'; }, 700);
       return;
     }
     if (!e.target.closest('#user-pop')) toggleUserPop(false);

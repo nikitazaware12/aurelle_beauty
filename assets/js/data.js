@@ -1,8 +1,8 @@
 /* Aurelle – catalogue data. Edit products here; every page reads from this file. */
 /* WhatsApp number in international format, digits only (change to your real number) */
 window.AURELLE_WA = '919876543210';
-/* true = visitors must log in before seeing any page; false = open site, login needed only at checkout */
-window.AURELLE_REQUIRE_LOGIN = false;
+/* true = login page opens first, website opens after login; false = open site, login needed only at checkout */
+window.AURELLE_REQUIRE_LOGIN = true;
 window.AURELLE_MAP = 'Bandra West, Mumbai';
 
 window.CATEGORIES = [
